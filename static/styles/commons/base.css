@@ -1,0 +1,43 @@
+body, td, input { font-family: '맑은 고딕', 'Malgun Gothic', '굴림', 'Gulim', sans-serif; }
+code { font-family: '돋움', 'Dotum'; }
+
+body {
+	max-width: 750px;
+	margin: 10px auto 0 auto;
+	background-image: url('../../images/bg.gif');
+	font-size: 15px;
+	line-height: 150%;
+}
+
+h1 { font-size: 20px; }
+h2 { font-size: 17px; }
+
+th, td { font-size: 15px; }
+
+ul, ol {
+	line-height: 200%;
+	padding-left: 15px;
+	margin-left: 15px;
+}
+
+code { background-color: #DDD; }
+
+table.layout .label { text-align: right; }
+
+table.info {
+	border-collapse: collapse;
+}
+
+table.info th, table.info td {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.err { color: red; }
+
+#search .query { width: 400px; }
+#search .query.blur { color: #888; }
+
+#logo { height: 20px; border: 0; }
+
+#sidebar { float: right; }

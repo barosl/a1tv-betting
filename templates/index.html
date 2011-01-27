@@ -1,0 +1,45 @@
+{% extends 'commons/base.html' %}
+{% load i18n %}
+
+{% block styles %}
+@import url('{{ STATIC_URL }}betting/styles/index.css');
+{% endblock %}
+
+{% block content %}
+
+<p><a href="{% url betting.views.matches %}">{% trans '경기 결과' %}</a></p>
+
+<h2>점수</h2>
+
+{% for name, season_reses in seasons %}
+<div class="season">
+	<h2>{{ name }}</h2>
+
+	<table class="info">
+		<tr>
+			<th>{% trans '이름' %}</th>
+			<th>{% trans '점수' %}</th>
+		</tr>
+
+{% for season_res in season_reses %}
+
+<tr>
+	<td>{{ season_res.bettor.name }}</td>
+	<td>{{ season_res.points }}</td>
+</tr>
+
+{% endfor %}
+
+	</table>
+</div>
+
+{% endfor %}
+
+<div style="clear: both;"></div>
+
+{% if user.is_authenticated %}
+<p><a href="{% url betting.views.update_matches %}">{% trans '경기 갱신' %}</a></p>
+<p><a href="{% url betting.views.update_points %}">{% trans '점수 갱신' %}</a></p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }} - {% trans 'A1 방송국' %}</title>
+		<style type="text/css">
+			@import url('{{ STATIC_URL }}betting/styles/commons/base.css');
+			{% block styles %}{% endblock %}
+		</style>
+	</head>
+	<body>
+		<h1>{{ title }}</h1>
+
+		{% block content %}{% endblock %}
+	</body>
+</html>

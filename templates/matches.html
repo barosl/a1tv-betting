@@ -1,0 +1,35 @@
+{% extends 'commons/base.html' %}
+{% load i18n %}
+
+{% block styles %}
+@import url('{{ STATIC_URL }}betting/styles/matches.css');
+{% endblock %}
+
+{% block content %}
+
+<table class="matches">
+	<tr>
+		<th>{% trans '이름' %}</th>
+		<th>{% trans '점수' %}</th>
+		<th>{% trans '보상' %}</th>
+		<th></th>
+	</tr>
+
+{% for match in matches %}
+
+<form method="post" action="{% url betting.views.matches %}" class="match">
+	{% csrf_token %}
+	<input type="hidden" name="match_id" value="{{ match.pk }}" />
+	<tr>
+		<td>{{ match.name }}</td>
+		<td><input type="text" name="score" value="{{ match.score }}" /></td>
+		<td><input type="text" name="reward" value="{{ match.reward }}" /></td>
+		<td><input type="submit" value="{% trans '저장' %}" /></td>
+	</tr>
+</form>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
