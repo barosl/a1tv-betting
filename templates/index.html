@@ -24,7 +24,13 @@
 {% for season_res in season_reses %}
 
 <tr>
-	<td>{{ season_res.bettor.name }}</td>
+	<td>
+		{% if season_res.bettor.name == 'inovrir' %}
+		<span style="color: red;">i</span><span style="color: orange;">n</span><span style="color: yellow;">o</span><span style="color: green;">v</span><span style="color: blue;">r</span><span style="color: indigo;">i</span><span style="color: purple;">r</span>
+		{% else %}
+		{{ season_res.bettor.name }}
+		{% endif %}
+	</td>
 	<td>{{ season_res.points }}</td>
 </tr>
 
