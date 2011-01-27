@@ -18,7 +18,7 @@ def index(req):
 	seasons = []
 
 	for season in Season.objects.order_by('-pk')[:3]:
-		season_reses = SeasonResult.objects.filter(season=season).order_by('-points')
+		season_reses = SeasonResult.objects.filter(season=season).order_by('-points', 'bettor__name')
 		seasons.append([season.name, season_reses])
 
 	return render_to_response('index.html', RequestContext(req, {
