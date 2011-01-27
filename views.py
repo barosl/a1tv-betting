@@ -17,7 +17,7 @@ DEFAULT_REWARD = 500
 def index(req):
 	seasons = []
 
-	for season in Season.objects.all():
+	for season in Season.objects.order_by('-pk')[:3]:
 		season_reses = SeasonResult.objects.filter(season=season).order_by('-points')
 		seasons.append([season.name, season_reses])
 
