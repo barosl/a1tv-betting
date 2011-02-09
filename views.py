@@ -18,7 +18,17 @@ def index(req):
 	seasons = []
 
 	for season in Season.objects.order_by('-pk')[:3]:
-		season_reses = SeasonResult.objects.filter(season=season).order_by('-points', 'bettor__name')
+		season_reses = SeasonResult.objects.raw(
+			'''SELECT seasonresult.id, seasonresult.bettor_id, seasonresult.points, COUNT(a.points) AS rank
+			FROM betting_seasonresult AS seasonresult
+			JOIN betting_bettor AS bettor
+			ON bettor.id=seasonresult.bettor_id
+			JOIN betting_seasonresult AS a
+			ON (seasonresult.points < a.points OR seasonresult.id=a.id) AND seasonresult.season_id=a.season_id
+			WHERE seasonresult.season_id=%s
+			GROUP BY seasonresult.id
+			ORDER BY seasonresult.points DESC, bettor.name''',
+			[season.pk])
 		seasons.append([season.name, season_reses])
 
 	return render_to_response('index.html', RequestContext(req, {
