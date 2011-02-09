@@ -129,7 +129,7 @@ def update_points(req):
 			season_res.points = points
 			season_res.save()
 
-	return HttpResponse(_(u'포인트 갱신 완료'))
+	return HttpResponse(_(u'점수 갱신 완료'))
 
 def matches(req):
 	if req.method == 'POST':
