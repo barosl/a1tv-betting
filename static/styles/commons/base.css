@@ -2,7 +2,7 @@ body, td, input { font-family: '맑은 고딕', 'Malgun Gothic', '굴림', 'Guli
 code { font-family: '돋움', 'Dotum'; }
 
 body {
-	max-width: 750px;
+	max-width: 850px;
 	margin: 10px auto 0 auto;
 	background-image: url('../../images/bg.gif');
 	font-size: 15px;

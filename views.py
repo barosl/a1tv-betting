@@ -11,7 +11,7 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidde
 from libs import htmllib2
 from django.core.urlresolvers import reverse
 
-DEFAULT_SEASON = u'시즌 2'
+DEFAULT_SEASON = u'시즌 3'
 DEFAULT_REWARD = 500
 
 def index(req):
